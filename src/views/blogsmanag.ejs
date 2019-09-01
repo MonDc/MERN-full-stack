@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Vizew - Blog &amp; Magazine HTML Template</title>
+
+    <%-include('partials/header')%>
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+        <!-- Top Header Area -->
+        <%-include('partials/topHeader', {user: user})%>
+
+        <!-- Navbar Area -->
+        <div class="vizew-main-menu" id="sticker">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+
+                    <!-- Menu -->
+                    <%-include('partials/navigation')%>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcrumb Area Start ##### -->
+    <div class="vizew-breadcrumb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/admin"><i class="fa fa-home" aria-hidden="true"></i> Admin Panel</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Blogs Management</li>
+                                <li style="margin-left: 600px;"><i class="fa fa-chevron-left"></i><a href="/admin"style="margin-left: 1rem ;">Back to Admin Panel</a></li>
+                            </ol>
+                            
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- ##### Breadcrumb Area End ##### -->
+
+    <!-- ##### Login Area Start ##### -->
+    <div class="vizew-login-area section-padding-80">
+        <div class="container ">
+            <div class="row justify-content-center">
+                <div class="col-12 ">
+                    <div class="login-content">
+                        <!-- Section Title -->
+                        <div class="section-heading">
+                            <h4>Blogs Management</h4>
+                            <div class="line"></div>
+                        </div>
+
+
+                        <div class="section-heading" style="margin-top: 7rem ;"> 
+
+                            <table  id="blogsTable" class="table ">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Keywords</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Created By</th>
+                                    <th scope="col">Exist</th>
+                                    <th scope="col">Image</th>
+                                    
+                                    
+                                  </tr>
+                                  
+                                </thead>
+                                <tbody>
+                                    <tbody>
+                                        <%for(let i = 0 ; i < result.length ; i++){%>
+                                            <%if(result[i].exist){%>
+                                                
+                                 <tr onclick='showModal(this)'>
+                                    <th scope="row"><%=i+1%></th>
+                                    <td style="display: none" class="bID"><%= result[i]._id%></td>
+                                    <td class="titleee"><%=result[i].title%></td>
+                                    <td class="keyw"><%=result[i].keyWords%></td>
+                                    <td class="desc"><%=result[i].description%></td>
+                                    <td class="cate"><%=result[i].category%></td>
+                                    <td class="created"><%=result[i].created%></td>
+                                    <td class="exist"><%=result[i].exist%></td>
+                                    <td class="immg"><img class="img-thumbnail" src="<%=result[i].imgUrl[0]%>" style="width:100px;height:100px" ></td>
+                                    
+                                  </tr>
+                                    
+                              <%}%>
+                              <%}%>
+                                </tbody>
+                              </table>
+
+                              <hr>
+
+                        </div> 
+
+
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Login Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+
+    <%-include('partials/footer')%>
+
+    <!-- ##### Footer Area End ##### -->
+
+    <%-include('partials/scripts')%>
+
+
+
+
+    <!-- Modal HTML-->
+    <div class="modal fade" id="blogModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">New message</h5>
+                <button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formDess">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Title:</label>
+                        <input id="title" name="title" type="text"
+                            class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">KeyWords:</label>
+                        <input id="keyWords" name="keyWords" type="text"
+                            class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Description:</label>
+                        <input id="description" name="description" type="text"
+                            class="form-control">
+                    </div>
+
+
+                    <!-- <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Category:</label>
+                        <input id="category" name="category" type="text"
+                            class="form-control">
+                    </div> -->
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Category:</label>
+                        <div class="form-group">
+                          <select id="categorySelect" name="categorySelect" class="form-control categories">
+                            <%for(let i = 0 ; i < categories.length ; i++){ %>
+                            <option value="<%=categories[i]._id%>" ><%=categories[i].title%></option>
+                            <%}%>
+                                    <option value="-1" >new category...</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div id="newcatContainer1" class="form-group " >
+                    <label class="col-md-4 control-label" for="newCategory">New category</label>
+                    <div class="col-md-9">
+                      
+                      <input id="newCategory" name="newCategory"  type="text"
+                            class="form-control">
+                    </div>
+                  </div>
+
+
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Image</label>
+                        <!-- <input id="images" name="images" multiple   type="file"> -->
+                        <!-- <input id="image" name="image" multiple   type="file" class="form-control"> -->
+                        
+                    </div> 
+                    
+                    <div class="modal-footer">
+                        <button id="Update" type="button"
+                            class="btn btn-secondary">Update</button>
+                        <button id="Delete" type="button"
+                            class="btn btn-primary btn-danger">Delete</button>
+                    </div>
+                    <input style="display:none;" id="IDblog" type="text" />
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Modal HTML END-->
+<script>
+    var IDblog;
+        function showModal(user) {
+            $("#title").val($(user).children(".titleee").html());
+            $("#keyWords").val($(user).children(".keyw").html());
+            $("#description").val($(user).children(".desc").html());
+            console.log($(user).children(".cate").html());
+            $('#categorySelect > option').each(function() {
+                
+                console.log($(this).text() );
+                if($(this).text() == $(user).children(".cate").html()){
+                    $(this).attr("selected","true");
+                }
+            });
+           //$("#categorySelect").val($(user).children(".cate").html());
+         //   $("#newCategory").val($(user));
+         // $("#images").val($(user).children(".immg").html());
+            $("#IDblog").val($(user).children(".bID").html());
+            $("#blogModal").modal("show");
+            IDblog = user;
+        }
+
+
+        $("#Delete").click(function () {
+            $.ajax({
+                method: "POST",
+                url: "/admin/delete",
+                data: {
+                    ID: $("#IDblog").val(),
+                },
+                success: function (d) {
+                    console.log(d)
+                    $(IDblog).remove();
+                    $("#blogModal").modal("hide");
+                },
+                error: function (e) {
+                    console.log(e)
+                }
+            });
+        });
+
+        $("select.categories").change(function(){
+        var selectedCategory = $(this).children("option:selected").val();
+        alert("You have selected the country - " + selectedCategory);
+
+    });
+
+        $("#Update").click(function () {
+            
+            $.ajax({
+                method: "POST",
+                url: "/admin/bloginfo",
+                data: {
+                    ID: $("#IDblog").val(),
+                    title: $("#title").val(),
+                    keyWords: $("#keyWords").val(),
+                    description: $("#description").val(),
+                    categorySelect: $("#categorySelect").val()
+                    // newCategory: $("#newCategory").val()
+                    
+                },
+                success: function (d) {
+                    console.log(d)
+                    $(IDblog).children(".titleee").html($("#title").val());
+                    $(IDblog).children(".keyw").html($("#keyWords").val());
+                    $(IDblog).children(".desc").html($("#description").val());
+                    // $(IDblog).children(".cate").html($("#categorySelect").val());
+                    //$(IDblog).children(".pnumer").html($("#newCategory").val());
+                    $("#blogModal").modal("hide");
+                },
+                error: function (e) {
+                    console.log(e)
+                }
+            });
+        });
+
+    
+</script>
+
+            
+          </body>
+        </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Vizew - Blog &amp; Magazine HTML Template</title>
+
+    <%-include('partials/header')%>
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+        <!-- Top Header Area -->
+        <%-include('partials/topHeader', {user: user})%>
+
+        <!-- Navbar Area -->
+        <div class="vizew-main-menu" id="sticker">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+
+                    <!-- Menu -->
+                    <%-include('partials/navigation')%>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcrumb Area Start ##### -->
+    <div class="vizew-breadcrumb">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin/blogsmanag"><i class="fa fa-home" aria-hidden="true"></i> Blogs Management</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Edit Blog</li>
+                            <li style="margin-left: 700px;"><i class="fa fa-chevron-left"></i><a href="/admin"style="margin-left: 1rem ;">Back to Admin Panel</a></li>
+                        </ol>
+                        
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Breadcrumb Area End ##### -->
+
+    <!-- ##### Login Area Start ##### -->
+    <div class="vizew-login-area section-padding-80">
+        <div class="container">
+            <div class="row justify-content-center"> 
+               
+                <div class="col-12 col-md-6"> 
+                <div class="login-content">
+                    <!-- Section Title -->
+                    <div class="section-heading">
+                        <h4>Edit Blog</h4>
+                        <div class="line"></div>
+                        
+                    </div>
+
+                     
+
+
+                    
+
+
+                </div>
+            </div>
+        </div>
+
+            
+
+              <div class="site-section" style="margin-top: 2rem ;">
+
+                  <form action="/admin/addBlog" method="POST"  class="form-horizontal" enctype="multipart/form-data">
+      
+                    <!-- Form Name -->
+                    <legend>Edit Blog</legend>
+    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="textinput">Title</label>
+                      <div class="col-md-9">
+                        <input id="titleInput" name="titleInput" type="text" value="<%=blog.title%>"
+                          class="form-control input-md" >
+                       
+                      </div>
+                    </div>
+    
+                    <!-- Text input-->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="keywordsInput">Key words</label>
+                      <div class="col-md-9">
+                        <input id="keywordsInput" name="keywordsInput" type="text" value="<%=blog.keyWords%>"
+                          class="form-control input-md" >
+                        
+                      </div>
+                    </div>
+    
+                    <!-- Textarea -->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="descTextarea">Description</label>
+                      <div class="col-md-9">
+                        <textarea class="form-control" id="descTextarea"
+                          name="descTextarea"><%=blog.description%></textarea>
+                      </div>
+                    </div>
+    
+                    <!-- Select Basic -->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="categorySelect">Category</label>
+                      <div class="col-md-9">
+                        <select id="categorySelect" name="categorySelect" class="form-control">
+                        <%for(let i = 0 ; i < categories.length ; i++){ %>
+                          <option value="<%=categories[i]._id%>" ><%=categories[i].title%></option>
+                          <%}%>
+                          <option value="-1" >new category...</option>
+                        </select>
+                      </div>
+                    </div>
+    
+                    <div id="newcatContainer" class="form-group d-none">
+                      <label class="col-md-4 control-label" for="newCategory">New category</label>
+                      <div class="col-md-9">
+                        <input id="newCategory" name="newCategory"  class="form-control input-md" type="text">
+                      </div>
+                    </div>
+    
+                    <!-- File Button -->
+                    <div class="form-group">
+                      <label class="col-md-4 control-label" for="UploadToDB">Photos</label>
+                      <div class="col-md-4">
+                        <input id="UploadToDB" name="UploadToDB" multiple class="input-file" type="file">
+                      </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-4">
+                  <input type="submit" class="btn btn-primary" style="color:white; background-color:#db4437;" value="Edit Blog">
+                </div>
+                </div>   
+
+                </form>
+  
+  
+                </div>
+        </div>
+    </div>
+    <!-- ##### Login Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+
+    <%-include('partials/footer')%>
+
+    <!-- ##### Footer Area End ##### -->
+
+    <%-include('partials/scripts')%>
+
+
+            
+          </body>
+        </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

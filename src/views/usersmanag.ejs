@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Vizew - Blog &amp; Magazine HTML Template</title>
+
+    <%-include('partials/header')%>
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+        <!-- Top Header Area -->
+        <%-include('partials/topHeader', {user: user})%>
+
+        <!-- Navbar Area -->
+        <div class="vizew-main-menu" id="sticker">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+
+                    <!-- Menu -->
+                    <%-include('partials/navigation')%>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcrumb Area Start ##### -->
+    <div class="vizew-breadcrumb">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin"><i class="fa fa-home" aria-hidden="true"></i>
+                                    Admin Panel</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Users Management</li>
+                            <li style="margin-left: 600px;"><i class="fa fa-chevron-left"></i><a href="/admin"
+                                    style="margin-left: 1rem ;">Back to Admin Panel</a></li>
+                        </ol>
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Breadcrumb Area End ##### -->
+
+    <!-- ##### Login Area Start ##### -->
+    <div class="vizew-login-area section-padding-80">
+        <div class="container ">
+            <div class="row justify-content-center">
+                <div class="col-12 ">
+                    <div class="login-content">
+                        <!-- Section Title -->
+                        <div class="section-heading">
+                            <h4>Users Management</h4>
+                            <div class="line"></div>
+                        </div>
+
+
+                        <div class="section-heading" style="margin-top: 7rem ;">
+
+                            <table id="usersTable" class="table ">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">First Name</th>
+                                        <th scope="col">Last Name</th>
+                                        <th scope="col">Date Of Birth</th>
+                                        <th scope="col">User Name</th>
+                                        <th scope="col">Phone Number</th>
+                                        <th scope="col">Password</th>
+                                        <th scope="col">active</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <%for(let i = 0 ; i < result.length ; i++){%>
+                                    <%if(result[i].active){%>
+                                    <%if(result[i].userType==="admin"){%>
+                                    <tr onclick='showModal(this)' class="bg-primary">
+                                        <%}else{%>
+                                    <tr onclick='showModal(this)'>
+                                        <%}%>
+                                        <th scope="row"><%=i+1%></th>
+                                        <td style="display: none" class="uID"><%= result[i]._id%></td>
+                                        <td class="fname"><%=result[i].firstName%></td>
+                                        <td class="lname"><%=result[i].lastName%></td>
+                                        <td class="dbirth"><%=result[i].dateBirth%></td>
+                                        <td class="uname"><%=result[i].userName%></td>
+                                        <td class="pnumer"><%=result[i].phoneNumber%></td>
+                                        <td class="pass"><%=result[i].password%></td>
+                                        <td class="active"><%=result[i].active%></td>
+                                    </tr>
+                                    <%}%>
+                                    <%}%>
+                                </tbody>
+                            </table>
+                            <hr>
+                            <!--Insert User Form-->
+                            <!-- ##### Login Area Start ##### -->
+                            <div id="addUserForm" style="display:none;"  >
+                            <%-include('partials/registerForm', {type:'insert'})%>
+                            </div>
+    
+        <!-- ##### Login Area End ##### -->
+                            <!--Insert User Form END-->
+                            <button id="addUser" class="btn btn-primary btn-lg">ADD USER</button>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Login Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+
+    <%-include('partials/footer')%>
+
+    <!-- ##### Footer Area End ##### -->
+
+    <%-include('partials/scripts')%>
+
+
+    <!-- Modal HTML-->
+    <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">New message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formDes">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">First
+                                Name:</label>
+                            <input id="firstName" name="firstName" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Last
+                                Name</label>
+                            <input id="lastName" name="lastName" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Date Of
+                                Birth:</label>
+                            <input id="dateBirth" name="dateBirth" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">User
+                                Name:</label>
+                            <input id="userName" name="userName" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Phone
+                                Number:</label>
+                            <input id="phoneNumber" name="phoneNumber" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Password:</label>
+                            <input id="password" name="password" type="password" class="form-control">
+                        </div>
+                        <div class="modal-footer">
+                            <button id="update" type="button" class="btn btn-secondary">Update</button>
+                            <button id="delete" type="button" class="btn btn-primary btn-danger">Delete</button>
+                        </div>
+                        <input style="display:none;" id="userID" type="text" />
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Modal HTML END-->
+
+    <script>
+        var userID;
+        function showModal(user) {
+            $("#firstName").val($(user).children(".fname").html());
+            $("#lastName").val($(user).children(".lname").html());
+            $("#dateBirth").val($(user).children(".dbirth").html());
+            $("#userName").val($(user).children(".uname").html());
+            $("#phoneNumber").val($(user).children(".pnumer").html());
+            $("#password").val($(user).children(".pass").html());
+            $("#userID").val($(user).children(".uID").html());
+            $("#Modal").modal("show");
+            userID = user;
+        }
+
+        $("#update").click(function () {
+            $.ajax({
+                method: "POST",
+                url: "/admin/userinfo",
+                data: {
+                    ID: $("#userID").val(),
+                    firstName: $("#firstName").val(),
+                    lastName: $("#lastName").val(),
+                    dateOfBirth: $("#dateBirth").val(),
+                    chooseUserName: $("#userName").val(),
+                    phoneNumber: $("#phoneNumber").val(),
+                    passwordname: $("#password").val()
+                },
+                success: function (d) {
+                    console.log(d)
+                    $(userID).children(".fname").html($("#firstName").val());
+                    $(userID).children(".lname").html($("#lastName").val());
+                    $(userID).children(".dbirth").html($("#dateBirth").val());
+                    $(userID).children(".uname").html($("#userName").val());
+                    $(userID).children(".pnumer").html($("#phoneNumber").val());
+                    $(userID).children(".pass").html($("#password").val());
+                    $("#Modal").modal("hide");
+                },
+                error: function (e) {
+                    console.log(e)
+                }
+            });
+        });
+
+
+        $("#delete").click(function () {
+            $.ajax({
+                method: "POST",
+                url: "/admin/del",
+                data: {
+                    ID: $("#userID").val(),
+                },
+                success: function (d) {
+                    console.log(d)
+                    $(userID).remove();
+                    $("#Modal").modal("hide");
+                },
+                error: function (e) {
+                    console.log(e)
+                }
+            });
+        });
+        $("#addUser").click(function () {
+            $("#addUserForm").show(500);
+            $("#addUser").hide(500);
+        });
+$("#addUserForm").find("form").submit(function(event){
+    var myForm=$("#addUserForm").find("form");
+    event.preventDefault();
+    console.log("Done");
+    var postURL=myForm.attr("action");
+    var form_Data=myForm.serialize();
+    console.log(form_Data);
+    $.ajax({
+        url:postURL,
+        method:"POST",
+        data:form_Data,
+        success: function(d){
+            console.log(d);
+            if(d){
+                //window.location.href = "/admin";
+                $('#usersTable tr:last').after('<tr onclick="showModal(this)"><td>'+(parseInt($('#usersTable th').last().html())+1)+'</td><td style="display: none" class="uID">'+d+'</td><td class="fname">'+myForm.find("input[name*='firstName']").val()+'</td><td class="lname">'+myForm.find("input[name*='lastName']").val()+'</td><td class="dbirth">'+myForm.find("input[name*='dateOfBirth']").val()+'</td><td class="uname">'+myForm.find("input[name*='chooseUserName']").val()+'</td><td class="pnumer">'+myForm.find("input[name*='phoneNumber']").val()+'</td><td class="pass">'+myForm.find("input[name*='passwordname']").val()+'</td><td class="active">active</td></tr>');
+                $("#addUserForm").hide(500);
+            $("#addUser").show(500);
+            }else{
+                $("#addUserForm").show(500);
+            }
+        },
+                error: function (e) {
+                    console.log(e)
+                }
+    });
+});
+
+    </script>
+
+</body>
+
+</html>
