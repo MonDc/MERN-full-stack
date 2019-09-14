@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Vizew - Blog &amp; Magazine HTML Template</title>
+
+    <%-include('partials/header')%>
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+        <!-- Top Header Area -->
+        <%- include('partials/topHeader', {user: undefined}); %>
+
+        <!-- Navbar Area -->
+        <div class="vizew-main-menu" id="sticker">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+
+                    <!-- Menu -->
+                    <%-include('partials/navigation')%>
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Breadcrumb Area Start ##### -->
+    <div class="vizew-breadcrumb">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i>
+                                    Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Login</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Breadcrumb Area End ##### -->
+
+    <!-- ##### Login Area Start ##### -->
+    <div class="vizew-login-area section-padding-80">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6">
+
+                    <div class="login-content">
+                        <!-- Section Title -->
+                        <div class="section-heading">
+                            <h1>Verify your account!</h1>
+                            <h5> I sent you an email to confirm your registeration. </h5>
+                            <h6>Please login to your email and click on the link to verify your Account
+                            </h6>
+                            <div class="line"></div>
+                        </div>
+
+
+
+                        <div class="section-heading" style="margin-top: 7rem ;">
+
+
+                            <a href="/admin" class="btn vizew-btn w-100 mt-30 border">go to your admin panel</a>
+                            <a href="/auth/logout" class="btn vizew-btn mt-30 border">Log out</a>
+
+
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+                    <!-- <} else{%>
+                    <div class="login-content">
+                     
+                        <div class="section-heading">
+                            <h1>Oops! please try again!</h1>
+                            <h5> Something went wrong. </h5>
+                            <h6> Your Username or Email or Phone Number Exist in our database
+                            </h6>
+                            <div class="line"></div>
+                        </div>
+                        <div class="section-heading" style="margin-top: 7rem ;">
+
+                            <a href="/admin" class="btn vizew-btn w-100 mt-30 border">Try again</a>
+                        </div>
+                    </div>
+                    <}%> -->
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Login Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+
+    <%-include('partials/footer')%>
+
+    <!-- ##### Footer Area End ##### -->
+
+    <%-include('partials/scripts')%>
+
+
+    <!-- <  if(user){%> -->
+
+    <!-- user is  exist modal -->
+
+    <!-- Button trigger modal-->
+
+
+
+</body>
+
+</html>

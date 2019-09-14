@@ -30,7 +30,7 @@
     <header class="header-area">
         <!-- Top Header Area -->
         <%- include('partials/topHeader', {user: user}); %>
-        
+
 
         <!-- Navbar Area -->
         <div class="vizew-main-menu" id="sticker">
@@ -39,7 +39,7 @@
 
                     <!-- Menu -->
                     <%-include('partials/navigation')%>
-                    
+
                 </div>
             </div>
         </div>
@@ -53,7 +53,8 @@
                 <div class="col-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home" aria-hidden="true"></i>
+                                    Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Login</li>
                         </ol>
                     </nav>
@@ -77,15 +78,18 @@
 
                         <form action="/auth/login" method="post">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="exampleInputEmail1" name="userNameloginname" placeholder="User Name">
+                                <input type="text" class="form-control" id="exampleInputEmail1" name="userNameloginname"
+                                    placeholder="User Name">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" id="exampleInputPassword1" name="passwordloginname" placeholder="Password">
+                                <input type="password" class="form-control" id="exampleInputPassword1"
+                                    name="passwordloginname" placeholder="Password">
                             </div>
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox mr-sm-2">
                                     <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-                                    <label class="custom-control-label" for="customControlAutosizing">Remember me</label>
+                                    <label class="custom-control-label" for="customControlAutosizing">Remember
+                                        me</label>
                                 </div>
                             </div>
                             <button type="submit" class="btn vizew-btn w-100 mt-30">Login</button>
@@ -94,12 +98,13 @@
 
                         <div class="section-heading" style="margin-top: 7rem ;">
                             <h6>Not registered yet?</h6>
+
                             <a href="/auth/register" class="btn vizew-btn w-100 mt-30 border">Register</a>
 
 
                         </div>
 
-                        
+
                     </div>
                 </div>
             </div>
@@ -118,61 +123,61 @@
 
     <% if(user){%>
 
-        <!-- user is  exist modal -->
-        
-        <!-- Button trigger modal-->
-        
-        
-        <!-- Modal: modalAbandonedCart-->
-        <div class="modal fade right" id="modalAbandonedCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-          aria-hidden="true" data-backdrop="false">
-          <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
+    <!-- user is  exist modal -->
+
+    <!-- Button trigger modal-->
+
+
+    <!-- Modal: modalAbandonedCart-->
+    <div class="modal fade right" id="modalAbandonedCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true" data-backdrop="false">
+        <div class="modal-dialog modal-side modal-bottom-right modal-notify modal-info" role="document">
             <!--Content-->
             <div class="modal-content">
-              <!--Header-->
-              <div class="modal-header bg-primary">
-                <p class="heading">Login Failed
-                </p>
-        
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true" class="white-text">&times;</span>
-                </button>
-              </div>
-        
-              <!--Body-->
-              <div class="modal-body">
-        
-                <div class="row">
-                  <div class="col-3">
-                    <p></p>
-                    <p class="text-center"><i class="fas fa-shopping-cart fa-4x"></i></p>
-                  </div>
-        
-                  <div class="col-9">
-                    <p>Sorry username or password is wrong</p>
-                    <p>Or you account is blocked</p>
-                    <p>Or you account is not yet verify</p>
-                    <p>No account yet? <a href="/auth/register">Register</a></p>
-                  </div>
+                <!--Header-->
+                <div class="modal-header bg-primary bg-primary-second">
+                    <p class="heading bg-primary-second">Login Failed!
+                    </p>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="white-text">&times;</span>
+                    </button>
                 </div>
-              </div>
-        
-              <!--Footer-->
-              <div class="modal-footer justify-content-center">
-                
-                <a type="button" class="btn btn-primary waves-effect" data-dismiss="modal">Retry</a>
-              </div>
+
+                <!--Body-->
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-3">
+                            <p></p>
+                            <p class="text-center"><i class="fas fa-shopping-cart fa-4x"></i></p>
+                        </div>
+
+                        <div class="col-9">
+                            <p>Sorry username or password is wrong</p>
+                            <p>Or you account is blocked</p>
+                            <p>Or you account is not yet verified</p>
+                            <p>No account yet? <a href="/auth/register">Register</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer justify-content-center">
+
+                    <a type="button" class="btn btn-primary waves-effect" data-dismiss="modal">Retry</a>
+                </div>
             </div>
             <!--/.Content-->
-          </div>
         </div>
-        <!-- Modal: modalAbandonedCart-->
-        
-        <script>
+    </div>
+    <!-- Modal: modalAbandonedCart-->
+
+    <script>
         $('#modalAbandonedCart').modal('show');
-        </script>
-        <!-- finish user is  exist comment -->
-        <%}%>
+    </script>
+    <!-- finish user is  exist comment -->
+    <%}%>
             
           </body>
         </html>

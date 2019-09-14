@@ -42,4 +42,8 @@ pagesRoutes.route('/contact').get((req, res) => {
     res.render('contact', { user: undefined });
 });
 
+pagesRoutes.route('/registersuccess').get((req, res) => {
+    res.render('registersuccess')
+})
+
 module.exports = pagesRoutes;

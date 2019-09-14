@@ -26,13 +26,15 @@ authRoutes.route('/register').post((req, res) => {
                 req.session.user = check
                 console.log(check);
                 // was: req.session.username = req.body.emailname
-                res.send("Please verify your Account then go to login page" + "<br><br><br>" + req.session.user._id);
+                //res.send("Please verify your Account then go to login page" + "<br><br><br>" + req.session.user._id);
+                res.redirect('/registersuccess')
 
 
 
 
             } else {
                 // res.send(false);
+                // try this---> res.redirect('/registersuccess', { successregister: undefined })
                 res.send("Sorry your Username or Email or Phone Number Exist in our database" + "<br>" + "Please Try another one");
             }
         });

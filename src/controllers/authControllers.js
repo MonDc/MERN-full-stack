@@ -47,7 +47,7 @@ function addUser(firstName, lastName, dateOfBirth, gender, userName, email, phon
                 });
                 //console.log(response.ops[0].active)
                 client.close();
-                emaiVerifier.sendverfyEmail(email, "Blogger verify your Email", "Please click this link to verify your Account" + "<br>" + "http://" + host + ":4000/verify?id=" + rand);
+                emaiVerifier.sendverfyEmail(email, "Montasir Blogger: Verify your Email", "Please click this link to verify your Account" + "<br>" + "http://" + host + ":4000/verify?id=" + rand);
                 callback(response.ops[0]);
                 // callback(true)
             }

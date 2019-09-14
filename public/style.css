@@ -55,6 +55,12 @@ ul {
   ul li {
     list-style: none; }
 
+    .bg-primary-second{
+      background-color: #db4437 !important;
+      color: white;
+      font-size: 22px;
+    }
+
 img {
   height: auto;
   max-width: 100%; }

@@ -12,14 +12,14 @@ var Transport = nodemailer.createTransport({
         rejectUnauthorized: false
     },
     auth: {
-        user: "hossien@ahmad-osman.com",
-        pass: "!234qweR"
+        user: "montaser@ahmad-osman.com",
+        pass: "9mqJs0_8"
     }
 });
 
 function sendverfyEmail(toEmail, subject, message) {
     mailOptions = {
-        from: "hossien@ahmad-osman.com",
+        from: "montaser@ahmad-osman.com",
         to: toEmail,
         subject: subject,
         html: message
@@ -28,7 +28,7 @@ function sendverfyEmail(toEmail, subject, message) {
         if (error) {
 
             console.log(error);
-            console.log("email has been not sended");
+            console.log("email has been not sent");
             callback(error)
         } else {
             console.log("Message sent: " + response.message);
