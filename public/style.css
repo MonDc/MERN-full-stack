@@ -19,6 +19,21 @@ body {
   background-color: #222627;
   color: #a6a6a6; }
 
+  
+/* part of my style*/
+
+.created-by{
+  font-size: 18px !important ;
+  color: #f0d616 !important;
+  
+}
+.upper-caze{
+  text-transform: uppercase !important;
+  font-size: 13px !important;
+  color:#3cb878 !important;
+  
+}
+
 h1,
 h2,
 h3,

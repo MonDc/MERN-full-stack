@@ -27,7 +27,7 @@ pagesRoutes.route('/verify').get(function (req, res) {
     let verifyNumber = req.param("id");
     emaiVerifier.verfyEmail(verifyNumber, (user) => {
         if (user) {
-            res.send("Hello " + user.firstName + " " + user.lastName + ", your Email is verivied. Please go to your profile <a href='./admin'>Login</a>")
+            res.send("Hello " + user.firstName + " " + user.lastName + ", your Email is verified. Please go to your profile <a href='./admin'>Login</a>")
         } else {
             res.send("this link is not valid ");
         }

@@ -38,7 +38,7 @@ adminRoutes.route('/').get((req, res) => {
 //change Password
 adminRoutes.route('/changepassword').get((req, res) => {
     if (req.session.user) {
-        res.render('changepassword',{user:req.session.user})
+        res.render('changepassword', { user: req.session.user })
     } else {
         res.redirect('/')
     }
@@ -60,16 +60,16 @@ adminRoutes.route('/changepassword').post((req, res) => {
 //change Personal Info
 adminRoutes.route('/personalinfo').get((req, res) => {
     if (req.session.user) {
-        const id=req.session.user._id;
+        const id = req.session.user._id;
         console.log(id);
         // res.render('personalinfo')
-        authControllers.getUser(id,(check,data)=>{
+        authControllers.getUser(id, (check, data) => {
 
-            if(check){
-                res.render('personalinfo',{data,user:req.session.user})
+            if (check) {
+                res.render('personalinfo', { data, user: req.session.user })
             }
         })
-        
+
     } else {
         res.redirect('/')
     }
@@ -77,11 +77,11 @@ adminRoutes.route('/personalinfo').get((req, res) => {
 
 
 
-                        
+
 adminRoutes.route('/personalinfo').post((req, res) => {
-    authControllers.changePersonalInfo(req.session.user._id, req.body.firstName,req.body.lastName,req.body.dateOfBirth,req.body.chooseUserName,req.body.phoneNumber,req.body.passwordname, (result) => {
+    authControllers.changePersonalInfo(req.session.user._id, req.body.firstName, req.body.lastName, req.body.dateOfBirth, req.body.chooseUserName, req.body.phoneNumber, req.body.passwordname, (result) => {
         console.log(result)
-        
+
         req.session.destroy();
         res.redirect('/auth/login')
     })
@@ -163,9 +163,9 @@ adminRoutes.post("/userinfo", (req, res) => {
 
 // This route to delete User
 
-adminRoutes.post("/del",(req,res)=>{
+adminRoutes.post("/del", (req, res) => {
     authControllers.updateDatabase(dbUrl, dbName, "users", req.body.ID, {
-        active:false
+        active: false
     }, (ok, data) => {
         if (ok) {
             res.json(data);
@@ -213,9 +213,10 @@ adminRoutes.route('/addBlog').post((req, res) => {
         req.body.categorySelect,
         req.body.newCategory,
         true,
-        req.session.user._id,
-        photosArr,(result) => {  // for created by
-        
+        //req.session.user._id,    ---> this is the one costas changed
+        req.session.user.firstName,
+        photosArr, (result) => {  // for created by
+
             authControllers.getCategories((ok, result) => {
                 if (ok) {
                     console.log(result);
@@ -238,41 +239,41 @@ adminRoutes.route('/addBlog').post((req, res) => {
 // get all blogs
 
 adminRoutes.route('/blogsmanag').get((req, res) => {
-    if(req.session.user.userType == "admin"){
+    if (req.session.user.userType == "admin") {
         endUserControllers.getBlogs((ok, result) => {
             if (ok) {
-               authControllers.getCategories((ok,categories)=>{
-                   if(ok){
-                    res.render('blogsmanag', { result, user: req.session.user,categories });
-                   }else{
-                    res.send(categories);
-                   }
-                
-               }) ;
-                
-            } else {
-                res.send(result);
-            }
-    
-        });
-    }else{
-        endUserControllers.getadminBlogs(req.session.user._id,(ok, result) => {
-            if (ok) {
-                authControllers.getCategories((ok,categories)=>{
-                    if(ok){
-                     res.render('blogsmanag', { result, user: req.session.user,categories });
-                    }else{
-                     res.send(categories);
+                authControllers.getCategories((ok, categories) => {
+                    if (ok) {
+                        res.render('blogsmanag', { result, user: req.session.user, categories });
+                    } else {
+                        res.send(categories);
                     }
-                 
-                }) ;
+
+                });
+
             } else {
                 res.send(result);
             }
-    
+
+        });
+    } else {
+        endUserControllers.getadminBlogs(req.session.user._id, (ok, result) => {
+            if (ok) {
+                authControllers.getCategories((ok, categories) => {
+                    if (ok) {
+                        res.render('blogsmanag', { result, user: req.session.user, categories });
+                    } else {
+                        res.send(categories);
+                    }
+
+                });
+            } else {
+                res.send(result);
+            }
+
         });
     }
-    
+
 
 });
 
@@ -284,9 +285,9 @@ adminRoutes.route('/blogsmanag').get((req, res) => {
 
 // This route to delete Blog
 
-adminRoutes.post("/delete",(req,res)=>{
+adminRoutes.post("/delete", (req, res) => {
     authControllers.updateDatabase(dbUrl, dbName, "Blogs", req.body.ID, {
-        exist:false
+        exist: false
     }, (ok, data) => {
         if (ok) {
             res.json(data);
@@ -312,9 +313,9 @@ adminRoutes.post("/bloginfo", (req, res) => {
         description: req.body.description,
         category: req.body.categorySelect
         // imgUrl: req.body.
-                    // :req.body.newCategory
- 
-        
+        // :req.body.newCategory
+
+
     }, (ok, data) => {
         if (ok) {
             res.json(data);
