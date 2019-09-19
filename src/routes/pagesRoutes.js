@@ -46,4 +46,8 @@ pagesRoutes.route('/registersuccess').get((req, res) => {
     res.render('registersuccess')
 })
 
+pagesRoutes.route('/single-post').get((req, res) => {
+    res.render('single-post')
+})
+
 module.exports = pagesRoutes;

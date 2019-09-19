@@ -213,8 +213,8 @@ adminRoutes.route('/addBlog').post((req, res) => {
         req.body.categorySelect,
         req.body.newCategory,
         true,
-        //req.session.user._id,    ---> this is the one costas changed
-        req.session.user.firstName,
+        req.session.user._id,   // ---> this is the one costas changed
+        //req.session.user.firstName,
         photosArr, (result) => {  // for created by
 
             authControllers.getCategories((ok, result) => {
